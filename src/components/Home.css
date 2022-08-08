@@ -1,0 +1,12 @@
+#home {
+    background-color: #3c61ac;
+    height:100vh;
+    display:flexbox;
+    justify-items: center;
+}
+
+h1{
+    font-size: 50px;
+    color:white;
+}
+
