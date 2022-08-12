@@ -6,12 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
 import {configureStore} from '@reduxjs/toolkit'
 import  recipesSlice  from './features/recipes';
+import  moviesSlice  from './features/movies';
+
 
 
 const store = configureStore({
   reducer:{
-    recipes:recipesSlice
-  }
+    recipes:recipesSlice,
+    movies:moviesSlice
+  },
+  
 })
 
 

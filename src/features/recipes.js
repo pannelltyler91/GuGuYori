@@ -7,6 +7,7 @@ export const recipesSlice = createSlice({
     addToList: (state, action) => {
         let thisItem = action.payload;
             console.log(thisItem);
+            state.recipeList = [...state.recipeList, thisItem]
       },
   },
 });
