@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToList } from '../features/recipes';
 import './Home.css'
 import Movies from './Movies'
+import Travel from './Travel'
 
 
 function Home (){
@@ -41,6 +42,7 @@ function Home (){
                 })}
             </div>
             <Movies/>
+            <Travel/>
         </div>
     )
 }

@@ -7,13 +7,15 @@ import {Provider} from 'react-redux'
 import {configureStore} from '@reduxjs/toolkit'
 import  recipesSlice  from './features/recipes';
 import  moviesSlice  from './features/movies';
+import  countrySlice  from './features/travel'
 
 
 
 const store = configureStore({
   reducer:{
     recipes:recipesSlice,
-    movies:moviesSlice
+    movies:moviesSlice,
+    travel:countrySlice
   },
   
 })
