@@ -4,6 +4,7 @@ import { addToList } from '../features/recipes';
 import './Home.css'
 import Movies from './Movies'
 import Travel from './Travel'
+import Container from 'react-bootstrap/Container'
 
 
 function Home (){
@@ -19,7 +20,7 @@ function Home (){
     }
     
     return(
-        <div id='home'>
+        <Container id='home'>
             <h1>구구요리</h1>
             <div id='addRecipe'>
                 <form onSubmit={_handleSubmit}>
@@ -43,7 +44,7 @@ function Home (){
             </div>
             <Movies/>
             <Travel/>
-        </div>
+        </Container>
     )
 }
 

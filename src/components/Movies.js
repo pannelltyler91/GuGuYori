@@ -1,6 +1,9 @@
 import {React,useState} from "react";
 import { useDispatch } from "react-redux";
 import {addToList} from '../features/movies'
+import Container from 'react-bootstrap/Container'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 
 function Movies() {
@@ -17,7 +20,7 @@ function Movies() {
   }
 
   return (
-    <div>
+    <Container>
       <form onSubmit={searchMovies}>
         <input
           type="search"
@@ -30,21 +33,21 @@ function Movies() {
       <div id="movieResults">
         {movieResults.map((movie) => {
           return (
-            <div className="movie" key={movie.imdbID}>
-              <p style={{color:'black'}}>{movie.Title}</p>
-              <img
+            <Card style={{width:'250px',height:'300px',margin:'10px'}} className="movie" key={movie.imdbID}>
+              <Card.Title>{movie.Title}</Card.Title>
+              <Card.Img
                 src={movie.Poster}
                 
-                height="100px"
-                width="100px"
+                height="200px"
+                width="50px"
                 alt="sorry"
               />
-              <button onClick={() => {dispatch(addToList({id:movie.imdbID,title:movie.Title,poster:movie.Poster}))} }>+</button>
-            </div>
+              <Button onClick={() => {dispatch(addToList({id:movie.imdbID,title:movie.Title,poster:movie.Poster}))} }>+</Button>
+            </Card>
           );
         })}
       </div>
-    </div>
+    </Container>
   );
 }
 

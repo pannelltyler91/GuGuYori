@@ -8,6 +8,7 @@ import {configureStore} from '@reduxjs/toolkit'
 import  recipesSlice  from './features/recipes';
 import  moviesSlice  from './features/movies';
 import  countrySlice  from './features/travel'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
