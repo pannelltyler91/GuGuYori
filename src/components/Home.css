@@ -1,6 +1,6 @@
 #home {
-    background-color: #3c61ac;
-    height:100vh;
+    background-color: #c1c6c7;
+    height:auto;
     display:flexbox;
     justify-items: center;
 }
@@ -14,10 +14,3 @@ p {
     color:white;
 }
 
-.recipe{
-    border:white solid 2px;
-    width:500px;
-    display:flexbox;
-    justify-items: center;
-
-}

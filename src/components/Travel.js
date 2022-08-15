@@ -1,11 +1,12 @@
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { Component } from 'react';
 import Container from 'react-bootstrap/Container'
+
  
 export class MapContainer extends Component {
   render() {
     return (
-        <Container style={{margin:'10px'}}>
+        <Container fluid style={{margin:'10px'}}>
       <Map style={{width:'500px',height:'500px'}}google={this.props.google} zoom={14}>
  
         <Marker onClick={this.onMarkerClick}

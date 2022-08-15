@@ -1,6 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Home from './components/Home'
-import Watchlist from "./components/Watchlist";
+import Movies from "./components/Movies";
+import Recipes from "./components/Recipes";
+import Travel from "./components/Travel";
+
 
 
 function App() {
@@ -9,7 +12,10 @@ function App() {
       <header className="App-header">
         <Routes>
           <Route exact path="/" element={<Home/>} />
-          <Route  path="/watchlist" element={<Watchlist/>} />
+          <Route  path="/movies" element={<Movies/>} />
+          <Route  path="/recipes" element={<Recipes/>} />
+          <Route  path="/travel" element={<Travel/>} />
+
         </Routes>
       </header>
     </div>
