@@ -10,7 +10,6 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 
-
 function Movies() {
   const [movieResults,setMovieResults] = useState([])
   const dispatch = useDispatch();
@@ -23,7 +22,6 @@ function Movies() {
       });
     e.target.movieSearch.value = "";
   }
-
   return (
     <Container style={{backgroundColor:'#0a8499'}} fluid>
         <Navbar style={{backgroundColor:'#0a8499',color:'#c1c6c7'}} expand="lg">
@@ -31,22 +29,12 @@ function Movies() {
         <Navbar.Brand href="#">영화 </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
+          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll >
             <Nav.Link href="/">구구</Nav.Link>
             <Nav.Link href="#action2">WatchList</Nav.Link>
           </Nav>
           <Form  onSubmit={searchMovies} className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search Movies"
-              id="movieSearch"
-              name="movieSearch"
-              aria-label="Search"
-            />
+            <Form.Control type="search" placeholder="Search Movies" id="movieSearch" name="movieSearch" aria-label="Search" />
             <Form.Control style={{backgroundColor:'#0a8499',color:'#c1c6c7'}}type="submit" name="movieSubmit" value="Search" />
           </Form>
         </Navbar.Collapse>
@@ -58,13 +46,7 @@ function Movies() {
               <Col lg={3}>
             <Card style={{width:'250px',height:'300px',margin:'10px',backgroundColor:'#c1c6c7'}} className="movie" key={movie.imdbID}>
               <Card.Title style={{fontSize:'15px'}}>{movie.Title}</Card.Title>
-              <Card.Img
-                src={movie.Poster}
-                
-                height="190px"
-                width="100px"
-                alt="sorry"
-              />
+              <Card.Img src={movie.Poster} height="190px"  width="100px" alt="sorry" />
               <Button style={{margin:'10px',backgroundColor:'#0a8499'}} onClick={() => {dispatch(addToList({id:movie.imdbID,title:movie.Title,poster:movie.Poster}))} }>Add To List</Button>
             </Card>
             </Col>

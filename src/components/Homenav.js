@@ -7,7 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function Homenav(){
     return(
         <Container fluid>
-            <Navbar style={{backgroundColor:'#0a8499'}} expand="lg">
+            <Navbar  style={{backgroundColor:'#0a8499'}} expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">구구 사이트</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -20,7 +20,7 @@ function Homenav(){
                         <NavDropdown.Item href="#action/3.2">
                             Music
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Calendar</NavDropdown.Item>
+                        <NavDropdown.Item href="calendar">Calendar</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     </Navbar.Collapse>

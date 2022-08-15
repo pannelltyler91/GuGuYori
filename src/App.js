@@ -1,3 +1,4 @@
+import  OurCalendar  from "./components/Calendar";
 import { Routes, Route } from "react-router-dom";
 import Home from './components/Home'
 import Movies from "./components/Movies";
@@ -15,7 +16,7 @@ function App() {
           <Route  path="/movies" element={<Movies/>} />
           <Route  path="/recipes" element={<Recipes/>} />
           <Route  path="/travel" element={<Travel/>} />
-
+          <Route  path="/calendar" element={<OurCalendar/>} />
         </Routes>
       </header>
     </div>
