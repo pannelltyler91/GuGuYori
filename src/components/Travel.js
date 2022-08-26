@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from "react-bootstrap/Container";
-import { GoogleMap, withScriptjs, withGoogleMap,Marker,InfoWindow } from "react-google-maps";
+import { GoogleMap, withScriptjs, withGoogleMap} from "react-google-maps";
 
 
 
