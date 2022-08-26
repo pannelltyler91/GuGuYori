@@ -1,23 +1,37 @@
-import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/esm/Container';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import {getSelectedDateEvents} from '../features/calendar'
+import { useDispatch } from 'react-redux';
+import ViewEvent from './ViewDateEvents';
 
 
 
 function OurCalendar() {
-  const [value] = useState(new Date());
-
+  const dispatch = useDispatch();
   const handleClick = (e) =>{
-    console.log(e)
-   
-    
+    e.preventDefault();
+    dispatch(getSelectedDateEvents(e.target.date.value))
+    e.target.date.value = ''
   }
  
 
   return (
-    <Container fluid>
-      <Calendar onChange={handleClick} value={value}  />
+    <Container fluid bg='info'>
+      <Row >
+        <Col lg={6}>
+          <Container>
+            <Form onSubmit={handleClick}>
+              <Form.Control type='date' name='date' id='today'/>
+              <Form.Control bg='info' type='submit' name='submit' value='Find Events' />
+            </Form>
+          </Container>
+        </Col>
+        <Col  lg={6}>
+          <ViewEvent/>
+        </Col>
+      </Row>
     </Container>
   );
 }

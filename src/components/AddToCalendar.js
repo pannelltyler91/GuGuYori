@@ -3,11 +3,16 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
+import {addEvent} from '../features/calendar'
+import {useDispatch} from 'react-redux';
 
 function AddToCalendar(props){
+    const dispatch = useDispatch();
     const handleAddEvent= (e) =>{
         e.preventDefault();
-        console.log({date:e.target.date.value,event:e.target.event.value,time:e.target.startTime.value})
+        let event = {date:e.target.date.value,event:e.target.event.value,time:e.target.startTime.value}
+        dispatch(addEvent(event))
+        e.target.value = ''
     }
     return(
         <Modal

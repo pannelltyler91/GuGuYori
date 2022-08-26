@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import AddToCalendar from './AddToCalendar'
 import Button from 'react-bootstrap/Button'
+import OurCalendar from './Calendar'
 
 
 function Home (){
@@ -19,10 +20,12 @@ function Home (){
                 <Col lg={6}><Memories/></Col>
                 <Col lg={3}></Col>
             </Row>
+            <Row style={{margin:'10px'}}>
+                
+                <Button variant='info' onClick={()=>{setShowModal(true)}}>Add to Calendar</Button>
+            </Row>
             <Row>
-                
-            <Button variant='primary' onClick={()=>{setShowModal(true)}}>Add to Calendar</Button>
-                
+                <OurCalendar/>
             </Row>
             <AddToCalendar show={showModal} onHide={() => setShowModal(false)} />
         </Container>
