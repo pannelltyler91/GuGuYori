@@ -13,7 +13,8 @@ export const moviesSlice = createSlice({
     addToList: (state, action) => {
       let thisItem = action.payload;
       let itemExists = state.movieList.find((item) => item.id === thisItem.id)
-      itemExists?alert('Movie already in list'):state.movieList = [...state.movieList,thisItem] 
+      itemExists?alert('Movie already in list'):state.movieList = [...state.movieList,thisItem]
+      
 
       console.log(state.movieList)
       

@@ -1,14 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './Home.css'
 import Memories from './Memories'
 import Homenav from './Homenav'
 import Container from 'react-bootstrap/Container'
-import OurCalendar from './Calendar'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import AddToCalendar from './AddToCalendar'
+import Button from 'react-bootstrap/Button'
 
 
 function Home (){
+    const [showModal,setShowModal] = useState(false)
     return(
         <Container fluid id='home'>
             <Homenav/>
@@ -18,10 +20,11 @@ function Home (){
                 <Col lg={3}></Col>
             </Row>
             <Row>
-                <Col lg={4}><OurCalendar style={{width:'75%'}}/></Col>
-                <Col lg={4}><OurCalendar style={{width:'75%'}}/></Col>
-                <Col lg={4}><OurCalendar style={{width:'75%'}}/></Col>
+                
+            <Button variant='primary' onClick={()=>{setShowModal(true)}}>Add to Calendar</Button>
+                
             </Row>
+            <AddToCalendar show={showModal} onHide={() => setShowModal(false)} />
         </Container>
     )
 }

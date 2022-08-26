@@ -9,6 +9,7 @@ import  recipesSlice  from './features/recipes';
 import  moviesSlice  from './features/movies';
 import  countrySlice  from './features/travel'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import calendarSlice  from './features/calendar';
 
 
 
@@ -16,7 +17,8 @@ const store = configureStore({
   reducer:{
     recipes:recipesSlice,
     movies:moviesSlice,
-    travel:countrySlice
+    travel:countrySlice,
+    calendar:calendarSlice
   },
   
 })

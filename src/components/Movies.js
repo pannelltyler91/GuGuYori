@@ -31,7 +31,7 @@ function Movies() {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll >
             <Nav.Link href="/">구구</Nav.Link>
-            <Nav.Link href="#action2">WatchList</Nav.Link>
+            <Nav.Link href="/watchlist">WatchList</Nav.Link>
           </Nav>
           <Form  onSubmit={searchMovies} className="d-flex">
             <Form.Control type="search" placeholder="Search Movies" id="movieSearch" name="movieSearch" aria-label="Search" />

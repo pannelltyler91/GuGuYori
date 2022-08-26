@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Movies from "./components/Movies";
 import Recipes from "./components/Recipes";
 import Travel from "./components/Travel";
+import Watchlist from "./components/Watchlist";
 
 
 
@@ -17,6 +18,7 @@ function App() {
           <Route  path="/recipes" element={<Recipes/>} />
           <Route  path="/travel" element={<Travel/>} />
           <Route  path="/calendar" element={<OurCalendar/>} />
+          <Route  path="/watchlist" element={<Watchlist/>} />
         </Routes>
       </header>
     </div>
