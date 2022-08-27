@@ -21,8 +21,8 @@ function Recipes(){
     }
     return(
         <Container fluid style={{backgroundColor:'#c1c6c7'}}>
-            <Nav style={{backgroundColor:'#0a8499',color:'#c1c6c7'}} id='addRecipe'>
-            <Nav.Link style={{color:'#c1c6c7',marginRight:'650px'}} href="/">구구</Nav.Link>
+            <Nav style={{backgroundColor:'#0dcaf0',color:'#808080'}} id='addRecipe'>
+            <Nav.Link style={{color:'#808080',marginRight:'650px'}} href="/"><strong>구구</strong></Nav.Link>
                 <form style={{marginTop:'4px'}} onSubmit={_handleSubmit}>
                     <input type='search' name='search' id='search' placeholder='Recipe name' />
                     <input type='url' name='webLink' id='webLink' placeholder='Website' />
@@ -34,9 +34,9 @@ function Recipes(){
                 {recipes.map((recipe) => {
                     return(
                         <Col lg={3} className='recipe'>
-                            <Card style={{backgroundColor:'#0a8499',color:'#c1c6c7'}}>
+                            <Card style={{backgroundColor:'#0dcaf0',color:'#808080'}}>
                                 <Card.Title key={recipe.recipeName}>{recipe.recipeName}</Card.Title>
-                                <a style={{color:'#c1c6c7'}} href={recipe.website}>Website</a>
+                                <a style={{color:'#808080'}} href={recipe.website}>Website</a>
                                 <iframe src={recipe.video} title='YouTube video player'/>
                             </Card>
                         </Col>

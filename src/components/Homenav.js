@@ -7,18 +7,17 @@ import {Link} from 'react-router-dom'
 
 function Homenav(){
     return(
-        <Container fluid>
-            <Navbar  bg='info' expand="lg">
+        <Container style={{backgroundColor:'#0dcaf0'}} fluid>
+            <Navbar  expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">구구 사이트</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to="movies">Movies</Link>
-                        <Link to="recipes">Recipes</Link>
-                        <Link to='travel'>Travel</Link>
-                        <Link to='calendar'>Calendar</Link>
-                        
+                        <Nav.Link href="movies">Movies</Nav.Link>
+                        <Nav.Link href="recipes">Recipes</Nav.Link>
+                        <Nav.Link href='travel'>Travel</Nav.Link>
+                        <Nav.Link href='calendar'>Calendar</Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>
