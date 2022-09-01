@@ -5,6 +5,7 @@ import Movies from "./components/Movies";
 import Recipes from "./components/Recipes";
 import Travel from "./components/Travel";
 import Watchlist from "./components/Watchlist";
+import Login from "./components/Login";
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route  path="/travel" element={<Travel/>} />
           <Route  path="/calendar" element={<OurCalendar/>} />
           <Route  path="/watchlist" element={<Watchlist/>} />
+          <Route  path="/login" element={<Login/>} />
         </Routes>
       </header>
     </div>

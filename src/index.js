@@ -10,6 +10,7 @@ import  moviesSlice  from './features/movies';
 import  countrySlice  from './features/travel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import calendarSlice  from './features/calendar';
+import userSlice  from './features/user';
 
 
 
@@ -18,7 +19,8 @@ const store = configureStore({
     recipes:recipesSlice,
     movies:moviesSlice,
     travel:countrySlice,
-    calendar:calendarSlice
+    calendar:calendarSlice,
+    user:userSlice
   },
   
 })
