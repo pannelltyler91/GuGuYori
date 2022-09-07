@@ -6,6 +6,7 @@ import Recipes from "./components/Recipes";
 import Travel from "./components/Travel";
 import Watchlist from "./components/Watchlist";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route  path="/calendar" element={<OurCalendar/>} />
           <Route  path="/watchlist" element={<Watchlist/>} />
           <Route  path="/login" element={<Login/>} />
+          <Route  path="/logout" element={<Logout/>} />
         </Routes>
       </header>
     </div>

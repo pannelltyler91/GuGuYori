@@ -2,14 +2,20 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {useDispatch} from'react-redux';
-import {login,getUser} from '../features/user';
+import {useSelector,useDispatch} from'react-redux';
+import {getUser} from '../features/user';
+import { useNavigate } from "react-router-dom";
+
 
 function Login() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const loggedIn = useSelector((state) => state.user.isLoggedIn)
+    const errorMessage = useSelector((state) => state.user.loginMessage)
     const handleLogin = (e) =>{
         e.preventDefault();
         dispatch(getUser({ email:e.target.email.value,password:e.target.password.value  }))
+        loggedIn ? navigate('/') : alert({errorMessage})
     }
   return (
     <Container fluid style={{backgroundColor:'#c1c6c7',height:'100vh'}}>
