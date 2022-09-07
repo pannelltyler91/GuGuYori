@@ -1,25 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const addMovie = createAsyncThunk(
+  'movie/watchlistAdd',
+  async({id,title,poster}) =>{
+      return await fetch('http://localhost:3001/movies/add', {
+          method: 'POST', // or 'PUT'
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({id,title,poster}),
+        })
+          .then((response) => response.json())
+          
+  }
+
+)
 
 export const moviesSlice = createSlice({
   name: "movies",
   initialState: { movieList: [], searchResults: [], },
-  reducers: {
-    searchMovie:  (state, action) => {
-      let thisItem = action.payload;
-      console.log(thisItem);
-      
-       
+  extraReducers:{
+    [addMovie.pending] : (state,action) =>{
+        console.log('pending')
     },
-    addToList: (state, action) => {
-      let thisItem = action.payload;
-      let itemExists = state.movieList.find((item) => item.id === thisItem.id)
-      itemExists?alert('Movie already in list'):state.movieList = [...state.movieList,thisItem]
-      
-
-      console.log(state.movieList)
-      
+    [addMovie.fulfilled]:(state,action) =>{
+        console.log('fulfilled')
     },
+    [addMovie.rejected]: (state,action) =>{
+        console.log('rejected')
+    }
   },
+  
 });
-export const { addToList, searchMovie } = moviesSlice.actions;
+
 export default moviesSlice.reducer;

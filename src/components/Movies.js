@@ -1,6 +1,6 @@
 import {React,useState} from "react";
 import { useDispatch } from "react-redux";
-import {addToList} from '../features/movies'
+import {addMovie} from '../features/movies'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -47,7 +47,7 @@ function Movies() {
             <Card style={{width:'250px',height:'300px',margin:'10px',backgroundColor:'#c1c6c7'}} className="movie" key={movie.imdbID}>
               <Card.Title style={{fontSize:'15px'}}>{movie.Title}</Card.Title>
               <Card.Img src={movie.Poster} height="190px"  width="100px" alt="sorry" />
-              <Button style={{margin:'10px',backgroundColor:'#0dcaf0'}} onClick={() => {dispatch(addToList({id:movie.imdbID,title:movie.Title,poster:movie.Poster}))} }>Add To List</Button>
+              <Button style={{margin:'10px',backgroundColor:'#0dcaf0'}} onClick={() => {dispatch(addMovie({id:movie.imdbID,title:movie.Title,poster:movie.Poster}))} }>Add To List</Button>
             </Card>
             </Col>
           );
