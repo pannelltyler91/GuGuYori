@@ -1,6 +1,6 @@
 import {React,useState} from "react";
 import { useDispatch } from "react-redux";
-import {addMovie} from '../features/movies'
+import {addMovie, getWatchList} from '../features/movies'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -9,6 +9,9 @@ import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
+import Watchlist from './Watchlist'
+import {Link} from 'react-router-dom'
+import {LinkContainer} from 'react-router-bootstrap'
 
 function Movies() {
   const [movieResults,setMovieResults] = useState([])
@@ -30,8 +33,10 @@ function Movies() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll >
-            <Nav.Link href="/">구구</Nav.Link>
-            <Nav.Link href="/watchlist">WatchList</Nav.Link>
+            <LinkContainer>
+            <Link to="/">구구</Link>
+            </LinkContainer>
+            <Button onClick={() => {dispatch(getWatchList())}}>Watchlist</Button>
           </Nav>
           <Form  onSubmit={searchMovies} className="d-flex">
             <Form.Control type="search" placeholder="Search Movies" id="movieSearch" name="movieSearch" aria-label="Search" />
@@ -43,7 +48,7 @@ function Movies() {
       <Row id="movieResults">
         {movieResults.map((movie) => {
           return (
-              <Col lg={3}>
+              <Col lg={3} key={movie.imdbID}>
             <Card style={{width:'250px',height:'300px',margin:'10px',backgroundColor:'#c1c6c7'}} className="movie" key={movie.imdbID}>
               <Card.Title style={{fontSize:'15px'}}>{movie.Title}</Card.Title>
               <Card.Img src={movie.Poster} height="190px"  width="100px" alt="sorry" />
@@ -52,6 +57,9 @@ function Movies() {
             </Col>
           );
         })}
+      </Row>
+      <Row>
+        <Watchlist/>
       </Row>
     </Container>
   );

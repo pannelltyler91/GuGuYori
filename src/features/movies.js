@@ -15,6 +15,20 @@ export const addMovie = createAsyncThunk(
   }
 
 )
+export const getWatchList = createAsyncThunk(
+  'movie/watchlistGet',
+  async() =>{
+      return await fetch('http://localhost:3001/movies/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then((response) => response.json())
+          
+  }
+
+)
 
 export const moviesSlice = createSlice({
   name: "movies",
@@ -27,6 +41,17 @@ export const moviesSlice = createSlice({
         console.log('fulfilled')
     },
     [addMovie.rejected]: (state,action) =>{
+        console.log('rejected')
+    },
+    [getWatchList.pending] : (state,action) =>{
+        console.log('pending')
+    },
+    [getWatchList.fulfilled]:(state,action) =>{
+        console.log('fulfilled')
+        console.log(action.payload)
+        state.movieList = action.payload.watchList;
+    },
+    [getWatchList.rejected]: (state,action) =>{
         console.log('rejected')
     }
   },

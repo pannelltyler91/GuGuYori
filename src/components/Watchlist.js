@@ -8,9 +8,9 @@ function Watchlist(){
             {movieList.map((movie) => {
           return (
             <div className="movie" key={movie.imdbID}>
-              <p style={{color:'black'}}>{movie.Title}</p>
+              <p style={{color:'black'}}>{movie.title}</p>
               <img
-                src={movie.Poster}
+                src={movie.poster_url}
                 
                 height="100px"
                 width="100px"

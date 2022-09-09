@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import App from './App';
 import {BrowserRouter as Router} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
@@ -13,6 +13,8 @@ import calendarSlice  from './features/calendar';
 import userSlice  from './features/user';
 
 
+const container = document.getElementById('root');
+const root = createRoot(container);
 
 const store = configureStore({
   reducer:{
@@ -27,15 +29,14 @@ const store = configureStore({
 
 
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
+    <Router>
     <Provider store={store}>
-      <Router>
     <App />
-    </Router>
     </Provider>
+    </Router>
   </React.StrictMode>,
-document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
