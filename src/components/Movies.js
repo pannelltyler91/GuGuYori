@@ -1,6 +1,6 @@
-import {React,useState} from "react";
-import { useDispatch } from "react-redux";
-import {addMovie, getWatchList} from '../features/movies'
+import {React} from "react";
+import { useDispatch,useSelector } from "react-redux";
+import {addMovie, searchMovie} from '../features/movies'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -9,22 +9,20 @@ import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
-import Watchlist from './Watchlist'
 import {Link} from 'react-router-dom'
-import {LinkContainer} from 'react-router-bootstrap'
+
+
 
 function Movies() {
-  const [movieResults,setMovieResults] = useState([])
   const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.user.isLoggedIn)
+  const movieResults = useSelector((state) => state.movies.searchResults)
   const searchMovies = (e) => {
     e.preventDefault();
-    fetch("http://www.omdbapi.com/?apikey=1a84594&s=" +e.target.movieSearch.value)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovieResults(data.Search.slice(0,8))
-      });
+    dispatch(searchMovie({searchValue:e.target.movieSearch.value}))
     e.target.movieSearch.value = "";
   }
+  
   return (
     <Container style={{backgroundColor:'#0dcaf0'}} fluid>
         <Navbar style={{backgroundColor:'#0dcaf0',color:'#c1c6c7'}} expand="lg">
@@ -33,10 +31,11 @@ function Movies() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll >
-            <LinkContainer>
+            
             <Link to="/">구구</Link>
-            </LinkContainer>
-            <Button onClick={() => {dispatch(getWatchList())}}>Watchlist</Button>
+            {loggedIn? <Link to="/watchlist">Watchlist</Link> : ""}
+            
+            
           </Nav>
           <Form  onSubmit={searchMovies} className="d-flex">
             <Form.Control type="search" placeholder="Search Movies" id="movieSearch" name="movieSearch" aria-label="Search" />
@@ -58,9 +57,7 @@ function Movies() {
           );
         })}
       </Row>
-      <Row>
-        <Watchlist/>
-      </Row>
+      
     </Container>
   );
 }
