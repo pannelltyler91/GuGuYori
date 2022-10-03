@@ -11,11 +11,10 @@ function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const loggedIn = useSelector((state) => state.user.isLoggedIn)
-    const errorMessage = useSelector((state) => state.user.loginMessage)
     const handleLogin = (e) =>{
         e.preventDefault();
         dispatch(getUser({ email:e.target.email.value,password:e.target.password.value  }))
-        loggedIn ? navigate('/') : alert('could not login')
+        loggedIn ? navigate('/') : alert('please login')
     }
   return (
     <Container fluid style={{backgroundColor:'#c1c6c7',height:'100vh'}}>

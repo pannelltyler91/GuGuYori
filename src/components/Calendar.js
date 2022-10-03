@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import {getSelectedDateEvents} from '../features/calendar'
+import {getEvents} from '../features/calendar'
 import { useDispatch } from 'react-redux';
 import ViewEvent from './ViewDateEvents';
 
@@ -12,7 +12,7 @@ function OurCalendar() {
   const dispatch = useDispatch();
   const handleClick = (e) =>{
     e.preventDefault();
-    dispatch(getSelectedDateEvents(e.target.date.value))
+    dispatch(getEvents({selectedDate:e.target.date.value}))
     e.target.date.value = ''
   }
  
