@@ -15,7 +15,6 @@ import {Link} from 'react-router-dom'
 
 function Movies() {
   const dispatch = useDispatch();
-  const loggedIn = useSelector((state) => state.user.isLoggedIn)
   const movieResults = useSelector((state) => state.movies.searchResults)
   const searchMovies = (e) => {
     e.preventDefault();
@@ -33,7 +32,7 @@ function Movies() {
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll >
             
             <Link to="/">구구</Link>
-            {loggedIn? <Link to="/watchlist">Watchlist</Link> : ""}
+            {localStorage.getItem('user') ? <Link to="/watchlist">Watchlist</Link> : ""}
             
             
           </Nav>

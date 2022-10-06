@@ -27,6 +27,7 @@ export const userSlice = createSlice({
         state.loginMessage = action.payload
         state.isLoggedIn = true
         state.currentUser = action.payload.user
+        localStorage.setItem('user',action.payload.user.username)
         console.log(action)
     },
     [getUser.rejected]: (state,action) =>{
@@ -36,11 +37,12 @@ export const userSlice = createSlice({
     }
   },
   reducers: {
-    login: async (state, action) => {
-        let thisUser = action.payload;
-        console.log(thisUser)
+    logout: async (state, action) => {
+        state.isLoggedIn = false;
+        localStorage.removeItem('user')
+
     },
   },
 });
-export const { login } = userSlice.actions;
+export const { logout } = userSlice.actions;
 export default userSlice.reducer;

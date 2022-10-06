@@ -13,26 +13,25 @@ import {useSelector} from 'react-redux'
 
 
 function Home (){
-    const loggedIn = useSelector((state) => state.user.isLoggedIn)
     const user = useSelector((state) => state.user.currentUser)
     const [showModal,setShowModal] = useState(false)
     return(
         <Container fluid id='home'>
             <Homenav/>
-            {loggedIn ? <h1>Welcome {user.username}!</h1> : ''}
+            {localStorage.getItem('user') ? <h1>Welcome {localStorage.getItem('user')}!</h1> : ''}
             <Row>
                 <Col lg={3}></Col>
-               {loggedIn ? <Col lg={6}><Memories/></Col> : <Col lg={6}></Col> } 
+               {localStorage.getItem('user') ? <Col lg={6}><Memories/></Col> : <Col lg={6}></Col> } 
                 <Col lg={3}></Col>
             </Row>
             <Row style={{margin:'10px'}}>
                 
-                {loggedIn ? <Button variant='info' onClick={()=>{setShowModal(true)}}>Add to Calendar</Button> : ''}
+                {localStorage.getItem('user') ? <Button variant='info' onClick={()=>{setShowModal(true)}}>Add to Calendar</Button> : ''}
             </Row>
             <Row>
-               {loggedIn ? <OurCalendar/> : '' } 
+               {localStorage.getItem('user') ? <OurCalendar/> : '' } 
             </Row>
-            {loggedIn ? <AddToCalendar show={showModal} onHide={() => setShowModal(false)} /> : <Welcome/>}
+            {localStorage.getItem('user') ? <AddToCalendar show={showModal} onHide={() => setShowModal(false)} /> : <Welcome/>}
         </Container>
     )
 }

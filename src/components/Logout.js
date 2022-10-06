@@ -1,12 +1,17 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-
+import Button from 'react-bootstrap/Button'
+import { useNavigate } from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import {logout} from '../features/user'
 
 function Logout(){
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     return(
         <Container>
-            <Nav.Link href='/'>Logout</Nav.Link>
+            {localStorage.getItem('user')?<Button onClick={() => {dispatch(logout())}}>Logout</Button> : navigate('/')}
+            
         </Container>
     )
 }
