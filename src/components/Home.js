@@ -9,11 +9,10 @@ import Col from 'react-bootstrap/Col'
 import AddToCalendar from './AddToCalendar'
 import Button from 'react-bootstrap/Button'
 import OurCalendar from './Calendar'
-import {useSelector} from 'react-redux'
+
 
 
 function Home (){
-    const user = useSelector((state) => state.user.currentUser)
     const [showModal,setShowModal] = useState(false)
     return(
         <Container fluid id='home'>
