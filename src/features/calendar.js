@@ -1,9 +1,13 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
+const user = JSON.parse(localStorage.getItem('user'))
+
+
+
 export const getEvents = createAsyncThunk(
-  'movie/watchListGet',
+  'calendar/eventsGet',
   async(date) =>{
-      return await fetch('http://localhost:3001/calendar' +date.date)
+      return await fetch(`http://localhost:3001/calendar/${date.date}/${user.id}`)
           .then((response) => response.json())
           
   }
@@ -11,9 +15,10 @@ export const getEvents = createAsyncThunk(
 )
 
 export const addEvent = createAsyncThunk(
-  'movie/eventAdd',
+  'calendar/eventAdd',
   async({date,event,time}) =>{
-      return await fetch('http://localhost:3001/calendar/add', {
+    
+      return await fetch(`http://localhost:3001/calendar/add/${user.id}`, {
           method: 'POST', // or 'PUT'
           headers: {
             'Content-Type': 'application/json',
@@ -23,6 +28,23 @@ export const addEvent = createAsyncThunk(
           .then((response) => response.json())
           
   }
+)
+
+
+export const deleteEvent = createAsyncThunk(
+  'calendar/deleteEvent',
+  async(event) =>{
+      return await fetch(`http://localhost:3001/calendar/${user.id}/${event.id}`, {
+          method: 'DELETE', // or 'PUT'
+          headers: {
+            'Content-Type': 'application/json',
+          }
+         
+        })
+          .then((response) => response.json())
+          
+  }
+
 )
 
 export const calendarSlice = createSlice({
@@ -46,6 +68,8 @@ export const calendarSlice = createSlice({
     [getEvents.fulfilled] : (state,action) =>{
       console.log('found events')
       console.log(action.payload)
+      state.selectedDateEvents = action.payload.events
+      
     },
     [getEvents.rejected] : (state,action) =>{
       console.log('something went wrong')
@@ -59,6 +83,19 @@ export const calendarSlice = createSlice({
       console.log(action.payload)
     },
     [addEvent.rejected] : (state,action) =>{
+      console.log('something went wrong')
+    },
+    [deleteEvent.pending] : (state,action) =>{
+      console.log('deleting event')
+      
+    },
+    [deleteEvent.fulfilled] : (state,action) =>{
+      console.log('event deleted')
+      console.log(action.payload)
+      let newList =  state.selectedDateEvents.filter((item) => item.id !== action.payload.eventID)
+        state.selectedDateEvents = newList
+    },
+    [deleteEvent.rejected] : (state,action) =>{
       console.log('something went wrong')
     },
   }

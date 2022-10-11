@@ -12,7 +12,7 @@ function OurCalendar() {
   const dispatch = useDispatch();
   const handleClick = (e) =>{
     e.preventDefault();
-    dispatch(getEvents({selectedDate:e.target.date.value}))
+    dispatch(getEvents({date:e.target.date.value}))
     e.target.date.value = ''
   }
  

@@ -24,11 +24,16 @@ export const userSlice = createSlice({
         console.log('pending')
     },
     [getUser.fulfilled]:(state,action) =>{
+      if(action.payload.loggedIn === false){
+        alert(action.payload.message)
+      }else{
         state.loginMessage = action.payload
         state.isLoggedIn = true
         state.currentUser = action.payload.user
-        localStorage.setItem('user',action.payload.user.username)
+        localStorage.setItem('user',JSON.stringify(action.payload.user))
         console.log(action)
+
+      }
     },
     [getUser.rejected]: (state,action) =>{
         state.loginMessage = action.payload

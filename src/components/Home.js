@@ -18,7 +18,7 @@ function Home (){
     return(
         <Container fluid id='home'>
             <Homenav/>
-            {localStorage.getItem('user') && user ? <h1>Welcome {localStorage.getItem('user')}!</h1> : ''}
+            {localStorage.getItem('user') && user ? <h1>Welcome {JSON.parse(localStorage.getItem('user')).username}!</h1> : ''}
             <Row>
                 <Col lg={3}></Col>
                {localStorage.getItem('user')  ? <Col lg={6}><Memories/></Col> : <Col lg={6}></Col> } 
