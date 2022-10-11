@@ -10,7 +10,7 @@ function Logout(){
     const dispatch = useDispatch();
     return(
         <Container>
-            {localStorage.getItem('user')?<Button onClick={() => {dispatch(logout())}}>Logout</Button> : navigate('/')}
+            {localStorage.getItem('user')?<Button  style={{color:'white',backgroundColor:'#A1CECC',boxShadow:'none',outline:'none'}} onClick={() => {dispatch(logout())}}>Logout</Button> : navigate('/')}
             
         </Container>
     )

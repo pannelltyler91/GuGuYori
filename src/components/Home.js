@@ -26,7 +26,7 @@ function Home (){
             </Row>
             <Row style={{margin:'10px'}}>
                 
-                {localStorage.getItem('user')  ? <Button variant='info' onClick={()=>{setShowModal(true)}}>Add to Calendar</Button> : ''}
+                {localStorage.getItem('user')  ? <Button style={{backgroundColor:'#5FABA5'}} onClick={()=>{setShowModal(true)}}>Add to Calendar</Button> : ''}
             </Row>
             <Row>
                {localStorage.getItem('user') ? <OurCalendar/> : '' } 

@@ -13,7 +13,7 @@ function ViewEvent() {
   
   return (
     <Container >
-        <h2><Badge bg="info">Events</Badge></h2>
+        <h2><Badge style={{backgroundColor:'#DBAFC1'}}>Events</Badge></h2>
       {selectedDateEvents.map((event) =>{
           return(
               <Card key={event.id} border='info'>
