@@ -2,7 +2,7 @@
 function Thing () {
     return(
         <div>
-            <h6>Thing</h6>
+            <h6>This is a thing</h6>
         </div>
     )
 }
