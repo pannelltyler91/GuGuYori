@@ -5,7 +5,6 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
 import {configureStore} from '@reduxjs/toolkit'
-import  recipesSlice  from './features/recipes';
 import  moviesSlice  from './features/movies';
 import  countrySlice  from './features/travel'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +17,6 @@ const root = createRoot(container);
 
 const store = configureStore({
   reducer:{
-    recipes:recipesSlice,
     movies:moviesSlice,
     travel:countrySlice,
     calendar:calendarSlice,
